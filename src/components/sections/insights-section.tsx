@@ -2,6 +2,7 @@ import type React from "react"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ArrowRight } from "lucide-react"
+import { Link } from "react-router-dom"
 
 const articles = [
   {
@@ -37,14 +38,30 @@ export function InsightsSection() {
   return (
     <section className="bg-background px-6 py-24" onMouseMove={handleMouseMove}>
       <div className="max-w-4xl mx-auto">
-        <motion.p
-          className="text-muted-foreground text-sm uppercase tracking-widest mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          Новости
-        </motion.p>
+        <div className="flex items-center justify-between mb-8">
+          <motion.p
+            className="text-muted-foreground text-sm uppercase tracking-widest"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            Новости
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <Link
+              to="/news"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
+              data-clickable
+            >
+              Все новости
+              <span>→</span>
+            </Link>
+          </motion.div>
+        </div>
 
         <div className="divide-y divide-border">
           {articles.map((article, i) => (
