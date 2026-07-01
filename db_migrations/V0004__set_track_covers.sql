@@ -1,0 +1,9 @@
+UPDATE t_p35572628_neptune_exploration_.tracks SET cover_url = 'https://cdn.poehali.dev/projects/3db99594-6e5b-4c67-93a8-fc7896496478/files/cb1853a4-ac54-4dd0-aca8-8c1ea6722f2f.jpg' WHERE id = 1;
+UPDATE t_p35572628_neptune_exploration_.tracks SET cover_url = 'https://cdn.poehali.dev/projects/3db99594-6e5b-4c67-93a8-fc7896496478/files/6c13a776-3c24-4337-a247-9f1d14f95651.jpg' WHERE id = 2;
+UPDATE t_p35572628_neptune_exploration_.tracks SET cover_url = 'https://cdn.poehali.dev/projects/3db99594-6e5b-4c67-93a8-fc7896496478/files/34aaea90-a8ac-4809-90af-3090dd1dda6c.jpg' WHERE id = 3;
+UPDATE t_p35572628_neptune_exploration_.tracks SET cover_url = 'https://cdn.poehali.dev/projects/3db99594-6e5b-4c67-93a8-fc7896496478/files/0dcb31ed-fa11-46c0-9a55-fc2ea8d57558.jpg' WHERE id = 4;
+UPDATE t_p35572628_neptune_exploration_.tracks SET cover_url = 'https://cdn.poehali.dev/projects/3db99594-6e5b-4c67-93a8-fc7896496478/files/7940afb8-34e8-4805-a505-ed001ee20d37.jpg' WHERE id = 5;
+UPDATE t_p35572628_neptune_exploration_.tracks SET cover_url = 'https://cdn.poehali.dev/projects/3db99594-6e5b-4c67-93a8-fc7896496478/files/d19b2ddd-3560-4071-9303-f579bf1053a5.jpg' WHERE id = 6;
+UPDATE t_p35572628_neptune_exploration_.tracks SET cover_url = 'https://cdn.poehali.dev/projects/3db99594-6e5b-4c67-93a8-fc7896496478/files/23904564-bac6-4fb7-af40-db1d21d64db8.jpg' WHERE id = 7;
+UPDATE t_p35572628_neptune_exploration_.tracks SET cover_url = 'https://cdn.poehali.dev/projects/3db99594-6e5b-4c67-93a8-fc7896496478/files/8b6ab4a8-33f5-42fd-a7b1-327f1d0187e4.jpg' WHERE id = 8;
+UPDATE t_p35572628_neptune_exploration_.tracks SET cover_url = 'https://cdn.poehali.dev/projects/3db99594-6e5b-4c67-93a8-fc7896496478/files/86712979-bb81-4110-9a37-bd89d7eede3f.jpg' WHERE id = 9;
