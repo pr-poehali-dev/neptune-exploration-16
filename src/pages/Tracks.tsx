@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Link } from "react-router-dom"
+
 import { LenisProvider } from "@/components/lenis-provider"
 import { CustomCursor } from "@/components/custom-cursor"
 import { FooterSection } from "@/components/sections/footer-section"
@@ -207,17 +207,8 @@ export default function TracksPage() {
       <main className="custom-cursor bg-background min-h-screen">
         <CustomCursor />
 
-        {/* Header */}
-        <header className="px-6 py-6 flex items-center justify-between max-w-6xl mx-auto">
-          <Link to="/" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
-            <Icon name="ArrowLeft" size={18} />
-            <span className="text-sm">На главную</span>
-          </Link>
-          <span className="font-serif text-xl text-foreground">РУДАК.</span>
-        </header>
-
         {/* Hero */}
-        <section className="max-w-6xl mx-auto px-6 pt-12 pb-20">
+        <section className="max-w-6xl mx-auto px-6 pt-28 pb-20">
           <motion.p
             className="text-muted-foreground text-sm uppercase tracking-widest mb-4"
             initial={{ opacity: 0, y: 20 }}
