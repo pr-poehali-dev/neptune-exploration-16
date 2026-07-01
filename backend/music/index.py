@@ -92,16 +92,15 @@ def handler(event: dict, context) -> dict:
         size = int(obj.find('s3:Size', ns).text)
         last_modified = obj.find('s3:LastModified', ns).text
 
-        if key.lower().endswith('.mp3'):
-            filename = key.split('/')[-1]
-            name = filename.rsplit('.', 1)[0]
-            tracks.append({
-                'key': key,
-                'title': name,
-                'url': f"{cdn_base}/{key}",
-                'size': size,
-                'last_modified': last_modified,
-            })
+        filename = key.split('/')[-1]
+        name = filename.rsplit('.', 1)[0]
+        tracks.append({
+            'key': key,
+            'title': name,
+            'url': f"{cdn_base}/{key}",
+            'size': size,
+            'last_modified': last_modified,
+        })
 
     tracks.sort(key=lambda x: x['last_modified'], reverse=True)
 
