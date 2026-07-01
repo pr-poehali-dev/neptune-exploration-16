@@ -9,6 +9,7 @@ const links = [
   { label: "Видео", href: "/videos" },
   { label: "Галерея", href: "/gallery" },
   { label: "Новости", href: "/news" },
+  { label: "Стихи", href: "/poems" },
 ]
 
 export function Navbar() {
