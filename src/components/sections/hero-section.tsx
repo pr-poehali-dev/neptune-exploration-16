@@ -77,7 +77,10 @@ export function HeroSection() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.8 }}
       >
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-center text-foreground mix-blend-difference">
+        <h1
+          className="text-5xl md:text-7xl lg:text-8xl font-serif text-center text-foreground mix-blend-difference"
+          style={{ textShadow: "0 0 20px rgba(255,255,255,0.9), 0 2px 8px rgba(255,255,255,0.7)" }}
+        >
           Дмитрий Рудак, <em className="italic">музыка души</em>.
         </h1>
       </motion.div>
