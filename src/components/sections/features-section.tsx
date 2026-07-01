@@ -117,13 +117,15 @@ export function FeaturesSection() {
             whileTap={{ scale: 0.96 }}
             data-clickable
           >
-            <div className="flex-1">
-              <LayoutAnimation />
-            </div>
-            <div className="mt-4">
-              <h3 className="font-serif text-xl text-foreground">Видео и клипы</h3>
-              <p className="text-muted-foreground text-sm mt-1">Атмосферные видеоработы и премьеры новых клипов.</p>
-            </div>
+            <Link to="/videos" className="flex flex-col h-full">
+              <div className="flex-1">
+                <LayoutAnimation />
+              </div>
+              <div className="mt-4">
+                <h3 className="font-serif text-xl text-foreground">Видео и клипы</h3>
+                <p className="text-muted-foreground text-sm mt-1">Атмосферные видеоработы и премьеры новых клипов.</p>
+              </div>
+            </Link>
           </motion.div>
 
           {/* Speed Card */}
