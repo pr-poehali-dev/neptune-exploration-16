@@ -72,7 +72,7 @@ export function HeroSection() {
       </div>
 
       <motion.div
-        className="absolute inset-0 flex items-center justify-center pointer-events-none z-10"
+        className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-10 gap-8"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.8 }}
@@ -83,6 +83,14 @@ export function HeroSection() {
         >
           Дмитрий Рудак, <em className="italic">музыка души</em>.
         </h1>
+        <motion.img
+          src="https://cdn.poehali.dev/projects/3db99594-6e5b-4c67-93a8-fc7896496478/bucket/0a0e5198-915a-4e82-84cc-c9a9a4e23b5f.png"
+          alt="Дмитрий Рудак"
+          className="w-48 md:w-64 lg:w-80 object-contain drop-shadow-2xl pointer-events-none"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 1.1 }}
+        />
       </motion.div>
 
       <motion.div
