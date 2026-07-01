@@ -292,6 +292,16 @@ export default function TracksPage() {
                   <Icon name="Music2" size={15} />
                   VK Музыка
                 </a>
+                <a
+                  href="https://music.mts.ru/album/39021997"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground text-sm font-medium transition-colors"
+                  data-clickable
+                >
+                  <Icon name="Radio" size={15} />
+                  МТС Музыка
+                </a>
               </div>
             </div>
           </div>
