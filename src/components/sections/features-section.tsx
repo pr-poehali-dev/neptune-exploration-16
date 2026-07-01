@@ -1,25 +1,26 @@
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 
-function TypeTester() {
-  const [scale, setScale] = useState(1)
+function AudioWave() {
+  const [bars, setBars] = useState([0.4, 0.7, 0.3, 0.9, 0.5, 0.8, 0.4])
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setScale((prev) => (prev === 1 ? 1.5 : 1))
-    }, 2000)
+      setBars((prev) => prev.map(() => 0.2 + Math.random() * 0.8))
+    }, 400)
     return () => clearInterval(interval)
   }, [])
 
   return (
-    <div className="flex items-center justify-center h-full">
-      <motion.span
-        className="font-serif text-6xl md:text-8xl text-foreground"
-        animate={{ scale }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      >
-        Aa
-      </motion.span>
+    <div className="flex items-end justify-center gap-2 h-full py-8">
+      {bars.map((h, i) => (
+        <motion.div
+          key={i}
+          className="w-3 md:w-4 bg-primary rounded-full"
+          animate={{ height: `${h * 100}%` }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+        />
+      ))}
     </div>
   )
 }
@@ -52,26 +53,18 @@ function LayoutAnimation() {
   )
 }
 
-function SpeedIndicator() {
-  const [progress, setProgress] = useState(0)
-
-  useEffect(() => {
-    const timeout = setTimeout(() => setProgress(100), 500)
-    return () => clearTimeout(timeout)
-  }, [])
-
+function VinylSpinner() {
   return (
-    <div className="flex flex-col items-center justify-center h-full gap-4">
-      <span className="text-3xl md:text-4xl font-sans font-medium text-foreground">100ms</span>
-      <span className="text-sm text-muted-foreground">Загрузка</span>
-      <div className="w-full max-w-[120px] h-1.5 bg-foreground/10 rounded-full overflow-hidden">
-        <motion.div
-          className="h-full bg-primary rounded-full"
-          initial={{ width: 0 }}
-          animate={{ width: `${progress}%` }}
-          transition={{ duration: 0.1 }}
-        />
-      </div>
+    <div className="flex items-center justify-center h-full">
+      <motion.div
+        className="w-28 h-28 md:w-32 md:h-32 rounded-full bg-foreground flex items-center justify-center relative"
+        animate={{ rotate: 360 }}
+        transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+      >
+        <div className="absolute inset-2 rounded-full border border-background/20" />
+        <div className="absolute inset-5 rounded-full border border-background/20" />
+        <div className="w-8 h-8 rounded-full bg-primary" />
+      </motion.div>
     </div>
   )
 }
@@ -102,11 +95,11 @@ export function FeaturesSection() {
             data-clickable
           >
             <div className="flex-1">
-              <TypeTester />
+              <AudioWave />
             </div>
             <div className="mt-4">
-              <h3 className="font-serif text-xl text-foreground">Типографика</h3>
-              <p className="text-muted-foreground text-sm mt-1">Красивые шрифты, которые идеально масштабируются.</p>
+              <h3 className="font-serif text-xl text-foreground">Треки</h3>
+              <p className="text-muted-foreground text-sm mt-1">Авторские песни и аранжировки в высоком качестве.</p>
             </div>
           </motion.div>
 
@@ -125,8 +118,8 @@ export function FeaturesSection() {
               <LayoutAnimation />
             </div>
             <div className="mt-4">
-              <h3 className="font-serif text-xl text-foreground">Макеты</h3>
-              <p className="text-muted-foreground text-sm mt-1">Гибкие сетки, которые адаптируются под контент.</p>
+              <h3 className="font-serif text-xl text-foreground">Видео и клипы</h3>
+              <p className="text-muted-foreground text-sm mt-1">Атмосферные видеоработы и премьеры новых клипов.</p>
             </div>
           </motion.div>
 
@@ -142,11 +135,11 @@ export function FeaturesSection() {
             data-clickable
           >
             <div className="flex-1">
-              <SpeedIndicator />
+              <VinylSpinner />
             </div>
             <div className="mt-4">
-              <h3 className="font-serif text-xl text-foreground">Скорость</h3>
-              <p className="text-muted-foreground text-sm mt-1">Молниеносная загрузка страниц для ваших гостей.</p>
+              <h3 className="font-serif text-xl text-foreground">Продюсирование</h3>
+              <p className="text-muted-foreground text-sm mt-1">Полный цикл создания музыки — от идеи до релиза.</p>
             </div>
           </motion.div>
         </div>

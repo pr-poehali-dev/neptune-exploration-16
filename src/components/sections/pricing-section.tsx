@@ -3,18 +3,18 @@ import { Check } from "lucide-react"
 
 const plans = [
   {
-    name: "Старт",
-    price: "1 200",
-    period: " руб/мес",
-    description: "Для личного портфолио",
-    features: ["5 страниц", "Свой домен", "Базовая аналитика", "Поддержка по email"],
+    name: "Запись песни",
+    price: "15 000",
+    period: " руб",
+    description: "Для начинающих исполнителей",
+    features: ["Аранжировка трека", "Запись вокала", "Сведение и мастеринг", "1 правка бесплатно"],
   },
   {
-    name: "Про",
-    price: "2 900",
-    period: " руб/мес",
-    description: "Для растущих авторов",
-    features: ["Безлимит страниц", "Приоритет поддержки", "Расширенная аналитика", "Свой брендинг", "Работа в команде"],
+    name: "Продюсирование",
+    price: "50 000",
+    period: " руб",
+    description: "Полный цикл под ключ",
+    features: ["Написание песни и стихов", "Профессиональная аранжировка", "Запись и мастеринг", "Съёмка клипа", "Продвижение релиза"],
     popular: true,
   },
 ]
@@ -29,8 +29,8 @@ export function PricingSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-5xl font-serif text-foreground">Простые и понятные цены</h2>
-          <p className="text-muted-foreground mt-4 max-w-md mx-auto">Начните бесплатно, платите когда готовы.</p>
+          <h2 className="text-3xl md:text-5xl font-serif text-foreground">Услуги студии</h2>
+          <p className="text-muted-foreground mt-4 max-w-md mx-auto">Создадим вашу музыку — от идеи до готового релиза.</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
@@ -75,7 +75,7 @@ export function PricingSection() {
                     : "bg-secondary text-foreground hover:bg-accent/30"
                 }`}
               >
-                Начать
+                Оставить заявку
               </button>
             </motion.div>
           ))}

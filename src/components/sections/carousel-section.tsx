@@ -1,12 +1,11 @@
 import { motion } from "framer-motion"
 
 const portfolioItems = [
-  "/portfolio-website-design-preview-modern.jpg",
-  "/photography-portfolio-website-clean.jpg",
-  "/architecture-firm-website-minimal.jpg",
-  "/design-agency-portfolio-dark-theme.jpg",
-  "/artist-portfolio-website-creative.jpg",
-  "/writer-portfolio-website-elegant.jpg",
+  "https://cdn.poehali.dev/projects/3db99594-6e5b-4c67-93a8-fc7896496478/files/a7f039c0-b9bf-45a9-b1e2-f353f8b02fea.jpg",
+  "https://cdn.poehali.dev/projects/3db99594-6e5b-4c67-93a8-fc7896496478/files/23056358-0bf7-49b6-8f59-51e0164ad976.jpg",
+  "https://cdn.poehali.dev/projects/3db99594-6e5b-4c67-93a8-fc7896496478/files/3f90295c-cb30-45cb-9c60-bb4b43075670.jpg",
+  "https://cdn.poehali.dev/projects/3db99594-6e5b-4c67-93a8-fc7896496478/files/50174bda-eaf5-4090-a487-2fe1d68d6879.jpg",
+  "https://cdn.poehali.dev/projects/3db99594-6e5b-4c67-93a8-fc7896496478/files/36ee897f-89d6-4665-99da-e65a2a0d2603.jpg",
 ]
 
 export function CarouselSection() {
@@ -22,7 +21,7 @@ export function CarouselSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          Создано авторами для авторов.
+          Музыка, которая остаётся с тобой.
         </motion.h2>
       </div>
 
