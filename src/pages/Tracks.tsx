@@ -7,45 +7,19 @@ import { CustomCursor } from "@/components/custom-cursor"
 import { FooterSection } from "@/components/sections/footer-section"
 import Icon from "@/components/ui/icon"
 
-const MUSIC_API = "https://functions.poehali.dev/12890d34-59c9-4824-8ac1-c948aef3a9a3"
+const TRACKS_API = "https://functions.poehali.dev/74b9b481-4e81-4d59-b8ae-c16b7a05c186"
 
-type S3Track = { key: string; title: string; url: string; size: number; last_modified: string }
+const FALLBACK_COVER = "https://cdn.poehali.dev/projects/3db99594-6e5b-4c67-93a8-fc7896496478/files/5b9d41ba-9b0a-4959-aa53-b18bfd770e78.jpg"
 
-// Статические треки с обложками
-const staticTracks = [
-  {
-    id: 1,
-    title: "Между строк",
-    album: "Одиночество в сети",
-    year: "2024",
-    duration: "3:42",
-    cover: "https://cdn.poehali.dev/projects/3db99594-6e5b-4c67-93a8-fc7896496478/files/5b9d41ba-9b0a-4959-aa53-b18bfd770e78.jpg",
-  },
-  {
-    id: 2,
-    title: "Ночной город",
-    album: "Одиночество в сети",
-    year: "2024",
-    duration: "4:15",
-    cover: "https://cdn.poehali.dev/projects/3db99594-6e5b-4c67-93a8-fc7896496478/files/39217df6-afc5-4024-9a1b-44359fb2971d.jpg",
-  },
-  {
-    id: 3,
-    title: "Последний шанс",
-    album: "Сингл",
-    year: "2023",
-    duration: "3:58",
-    cover: "https://cdn.poehali.dev/projects/3db99594-6e5b-4c67-93a8-fc7896496478/files/78d0219e-cb3f-4d8e-9ca4-ceae5aa45588.jpg",
-  },
-  {
-    id: 4,
-    title: "Красная нить",
-    album: "Сингл",
-    year: "2023",
-    duration: "4:30",
-    cover: "https://cdn.poehali.dev/projects/3db99594-6e5b-4c67-93a8-fc7896496478/files/258050f4-d7fa-4b9a-8f46-14e39849014c.jpg",
-  },
-]
+type DbTrack = {
+  id: number
+  title: string
+  album: string
+  year: string
+  cover_url: string | null
+  audio_url: string | null
+  sort_order: number
+}
 
 type Track = {
   id: number
@@ -254,34 +228,26 @@ function TrackCard({ track, isActive, onPlay }: { track: Track; isActive: boolea
 export default function TracksPage() {
   const [activeIdx, setActiveIdx] = useState<number | null>(null)
 
-  const { data } = useQuery<{ tracks: S3Track[]; total: number }>({
-    queryKey: ["music-tracks"],
+  const { data } = useQuery<{ tracks: DbTrack[] }>({
+    queryKey: ["tracks-db"],
     queryFn: async () => {
-      const res = await fetch(MUSIC_API)
+      const res = await fetch(TRACKS_API)
       if (!res.ok) throw new Error("err")
       return res.json()
     },
-    staleTime: 1000 * 60 * 10,
+    staleTime: 1000 * 60 * 5,
   })
 
-  // Мёрж: сопоставляем статические треки с аудио из S3 по индексу/названию
-  const tracks: Track[] = staticTracks.map((st, i) => {
-    const s3 = data?.tracks[i]
-    return { ...st, audioUrl: s3?.url }
-  })
-
-  // Дополнительные треки из S3, которые не попали в статику
-  const extraTracks: Track[] = (data?.tracks || []).slice(staticTracks.length).map((s3, i) => ({
-    id: 100 + i,
-    title: s3.title,
-    album: "Сингл",
-    year: new Date(s3.last_modified).getFullYear().toString(),
+  const allTracks: Track[] = (data?.tracks || []).map((t) => ({
+    id: t.id,
+    title: t.title,
+    album: t.album,
+    year: t.year,
     duration: "",
-    cover: staticTracks[0].cover,
-    audioUrl: s3.url,
+    cover: t.cover_url || FALLBACK_COVER,
+    audioUrl: t.audio_url || undefined,
   }))
 
-  const allTracks = [...tracks, ...extraTracks]
   const activeTrack = activeIdx !== null ? allTracks[activeIdx] : null
 
   const handlePlay = (idx: number) => {
@@ -338,7 +304,7 @@ export default function TracksPage() {
               transition={{ delay: 0.3, duration: 0.8 }}
             >
               <img
-                src={activeTrack?.cover || staticTracks[0].cover}
+                src={activeTrack?.cover || allTracks[0]?.cover || FALLBACK_COVER}
                 alt="Обложка"
                 className="w-full h-full object-cover transition-all duration-700"
               />
@@ -348,7 +314,7 @@ export default function TracksPage() {
                   {activeTrack ? "Сейчас играет" : "Последний релиз"}
                 </p>
                 <p className="text-white font-serif text-2xl mt-1">
-                  {activeTrack?.title || staticTracks[0].title}
+                  {activeTrack?.title || allTracks[0]?.title || ""}
                 </p>
               </div>
             </motion.div>
