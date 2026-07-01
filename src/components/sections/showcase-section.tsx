@@ -1,5 +1,6 @@
 import { useRef } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
+import { Link } from "react-router-dom"
 
 const showcaseImages = [
   "https://cdn.poehali.dev/projects/3db99594-6e5b-4c67-93a8-fc7896496478/files/36ee897f-89d6-4665-99da-e65a2a0d2603.jpg",
@@ -23,14 +24,30 @@ export function ShowcaseSection() {
   return (
     <section ref={containerRef} className="bg-background px-6 py-32 overflow-hidden">
       <div className="max-w-6xl mx-auto">
-        <motion.p
-          className="text-muted-foreground text-sm uppercase tracking-widest mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          Фотогалерея
-        </motion.p>
+        <div className="flex items-center justify-between mb-8">
+          <motion.p
+            className="text-muted-foreground text-sm uppercase tracking-widest"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            Фотогалерея
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <Link
+              to="/gallery"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
+              data-clickable
+            >
+              Смотреть все
+              <span>→</span>
+            </Link>
+          </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {showcaseImages.map((src, i) => (
