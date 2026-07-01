@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
+import { Link } from "react-router-dom"
 
 function AudioWave() {
   const [bars, setBars] = useState([0.4, 0.7, 0.3, 0.9, 0.5, 0.8, 0.4])
@@ -94,13 +95,15 @@ export function FeaturesSection() {
             transition={{ duration: 0.2 }}
             data-clickable
           >
-            <div className="flex-1">
-              <AudioWave />
-            </div>
-            <div className="mt-4">
-              <h3 className="font-serif text-xl text-foreground">Треки</h3>
-              <p className="text-muted-foreground text-sm mt-1">Авторские песни и аранжировки в высоком качестве.</p>
-            </div>
+            <Link to="/tracks" className="flex flex-col h-full">
+              <div className="flex-1">
+                <AudioWave />
+              </div>
+              <div className="mt-4">
+                <h3 className="font-serif text-xl text-foreground">Треки</h3>
+                <p className="text-muted-foreground text-sm mt-1">Авторские песни и аранжировки в высоком качестве.</p>
+              </div>
+            </Link>
           </motion.div>
 
           {/* Layouts Card */}
